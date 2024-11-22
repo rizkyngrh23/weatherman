@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weatherman</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="weather-container">
+        <header>
+            <h1>Weatherman</h1>
+            <div class="search-container">
+                <input type="text" id="search" placeholder="Enter city...">
+                <button id="search-button">Search</button>
+                <!-- Removed the location button -->
+            </div>
+        </header>
+        <div id="date-time"></div>
+        <div id="default-cities-weather" class="horizontal-container">
+            <div id="jakarta-weather" class="small-box hidden">
+                <h2 id="jakarta-city">Jakarta</h2>
+                <img id="jakarta-weather-icon" src="" alt="Weather Icon" class="hidden">
+                <p id="jakarta-description">Sunny</p>
+                <h3 id="jakarta-temp">25°C</h3>
+            </div>
+            <div id="bandung-weather" class="small-box hidden">
+                <h2 id="bandung-city">Bandung</h2>
+                <img id="bandung-weather-icon" src="" alt="Weather Icon" class="hidden">
+                <p id="bandung-description">Sunny</p>
+                <h3 id="bandung-temp">25°C</h3>
+            </div>
+            <div id="surabaya-weather" class="small-box hidden">
+                <h2 id="surabaya-city">Surabaya</h2>
+                <img id="surabaya-weather-icon" src="" alt="Weather Icon" class="hidden">
+                <p id="surabaya-description">Sunny</p>
+                <h3 id="surabaya-temp">25°C</h3>
+            </div>
+            <div id="semarang-weather" class="small-box hidden">
+                <h2 id="semarang-city">Semarang</h2>
+                <img id="semarang-weather-icon" src="" alt="Weather Icon" class="hidden">
+                <p id="semarang-description">Sunny</p>
+                <h3 id="semarang-temp">25°C</h3>
+            </div>
+        </div>
+        <div id="weather-info" class="hidden">
+            <h2 id="city">City Name</h2>
+            <img id="weather-icon" src="" alt="Weather Icon" class="hidden">
+            <p id="description">Sunny</p>
+            <h3 id="temp">25°C</h3>
+            <p id="humidity">Humidity: 60%</p>
+            <p id="wind">Wind Speed: 5 m/s</p>
+            <p id="pressure">Pressure: 1013 hPa</p>
+            <p id="feels-like">Feels Like: 27°C</p>
+            <p id="visibility">Visibility: 10 km</p>
+            <p id="sunrise">Sunrise: 6:00 AM</p>
+            <p id="sunset">Sunset: 6:00 PM</p>
+        </div>
+        <div id="forecast" class="hidden">
+            <!-- The caption will be added dynamically by the script -->
+        </div>
+        <div id="air-quality" class="hidden">
+            <!-- The air quality information will be added dynamically by the script -->
+        </div>
+        <div id="loading-spinner" class="hidden"></div>
+        <div id="error-message" class="hidden">
+            <p>Please input a correct city.</p>
+        </div>
+    </div>
+    <footer>
+        <p>&copy; 2024 Weather App. All rights reserved.</p>
+    </footer>
+    <script src="js/fetchData.js" defer></script>
+    <script src="script.js" defer></script>
+</body>
+</html>
