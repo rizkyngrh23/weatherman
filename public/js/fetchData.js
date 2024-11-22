@@ -4,7 +4,7 @@ async function fetchApiKey() {
     try {
         const response = await fetch('/api/api-key');
         const text = await response.text();
-        console.log('API Key Response:', text); // Log the response for debugging
+        console.log('API Key Response:', text);
         const data = JSON.parse(text);
         apiKey = data.apiKey;
     } catch (error) {
@@ -71,7 +71,7 @@ async function fetchAirQuality(lat, lon) {
             throw new Error('City not found');
         }
         const data = await response.json();
-        console.log('Air Quality Data:', data); // Debugging information
+        console.log('Air Quality Data:', data);
         updateAirQualityInfo(data);
     } catch (error) {
         console.error('Error fetching air quality:', error);

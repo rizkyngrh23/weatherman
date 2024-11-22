@@ -1,9 +1,9 @@
 const express = require('express');
 const app = express();
 const path = require('path');
-require('dotenv').config(); // Load environment variables
+require('dotenv').config();
 
-// Middleware to log request method, URL, and response time
+// Middleware for req time
 app.use((req, res, next) => {
     const start = Date.now();
     res.on('finish', () => {
@@ -13,7 +13,7 @@ app.use((req, res, next) => {
     next();
 });
 
-app.use(express.static(path.join(__dirname, 'public'))); // Serve static files
+app.use(express.static(path.join(__dirname, 'public')));
 
 app.use((req, res, next) => {
     res.setHeader("Content-Security-Policy", "default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self'");
@@ -25,12 +25,11 @@ app.get('/api-key', (req, res) => {
 });
 
 app.post('/some-endpoint', (req, res) => {
-    // Handle POST request
     res.json({ message: 'POST request received' });
 });
 
 app.get('/favicon.ico', (req, res) => {
-    res.status(204).end(); // Send a 204 No Content response if the favicon is missing
+    res.status(204).end();
 });
 
 app.get('*', (req, res) => {

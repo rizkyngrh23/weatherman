@@ -5,7 +5,7 @@ body {
     background-size: cover;
     color: white;
     text-align: center;
-    min-height: 100vh; /* Ensure the background covers the full height */
+    min-height: 100vh; 
     display: flex;
     flex-direction: column;
 }
@@ -21,7 +21,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    flex-grow: 1; /* Allow the container to grow and fill the available space */
+    flex-grow: 1; 
 }
 
 header h1 {
@@ -67,7 +67,6 @@ header h1 {
     box-shadow: 1px 1px 0 #000;
 }
 
-/* Removed styles for #location-button */
 
 .horizontal-container {
     display: flex;
@@ -93,7 +92,7 @@ header h1 {
     border: 1px solid #000;
     padding: 5px;
     box-shadow: 2px 2px 0 #000;
-    background: #ffcc00; /* Default background color */
+    background: #ffcc00;
     color: #000;
 }
 
@@ -115,7 +114,7 @@ header h1 {
     border: 1px solid #000;
     padding: 5px;
     box-shadow: 2px 2px 0 #000;
-    background: #ffcc00; /* Default background color */
+    background: #ffcc00;
     color: #000;
 }
 
@@ -134,20 +133,20 @@ header h1 {
     border: 2px solid #000;
     padding: 10px;
     box-shadow: 3px 3px 0 #000;
-    background: #ffcc00; /* Default background color */
+    background: #ffcc00;
     color: #000;
 }
 
 #weather-info h2 {
-    background: #ffcc00; /* City Name */
+    background: #ffcc00;
 }
 
 #weather-info h3 {
-    background: #ff9999; /* Temperature */
+    background: #ff9999; 
 }
 
 #weather-info p {
-    background: #99ccff; /* Other info */
+    background: #99ccff; 
 }
 
 #forecast {
@@ -168,11 +167,11 @@ header h1 {
 }
 
 #forecast h3 {
-    background: #ff9999; /* Forecast header */
+    background: #ff9999; 
 }
 
 #forecast .forecast-day {
-    background: #99ccff; /* Forecast days */
+    background: #99ccff;
 }
 
 #air-quality {
@@ -192,11 +191,11 @@ header h1 {
 }
 
 #air-quality h3 {
-    background: #ff9999; /* Air Quality header */
+    background: #ff9999;
 }
 
 #air-quality p {
-    background: #99ccff; /* Air Quality details */
+    background: #99ccff; 
 }
 
 .hidden {
@@ -210,7 +209,6 @@ footer {
     color: white;
     text-align: center;
     width: 100%;
-    /* Remove fixed positioning to allow footer to move with content */
 }
 
 #error-message {
@@ -240,7 +238,6 @@ footer {
     color: #000;
 }
 
-/* Responsive styles */
 @media (max-width: 600px) {
     .horizontal-container {
         display: grid;

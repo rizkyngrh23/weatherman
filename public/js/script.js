@@ -3,7 +3,7 @@ let defaultCityElems = {}, defaultDescriptionElems = {}, defaultTempElems = {}, 
 
 function updateWeatherInfo(data) {
     if (!data.weather) {
-        console.error('Invalid weather data:', data); // Log invalid data for debugging
+        console.error('Invalid weather data:', data);
         return;
     }
     cityElem.textContent = data.name;
@@ -50,15 +50,15 @@ function getAQIColor(aqi) {
 function convertAQI(aqi) {
     switch (aqi) {
         case 1:
-            return 25; // Good (0-50)
+            return 25;
         case 2:
-            return 75; // Fair (51-100)
+            return 75;
         case 3:
-            return 125; // Moderate (101-150)
+            return 125;
         case 4:
-            return 175; // Poor (151-200)
+            return 175;
         case 5:
-            return 250; // Very Poor (201-300+)
+            return 250;
         default:
             return 0;
     }
@@ -66,7 +66,7 @@ function convertAQI(aqi) {
 
 function updateAirQualityInfo(data) {
     const aqi = convertAQI(data.list[0].main.aqi);
-    console.log('Converted AQI:', aqi); // Debugging information
+    console.log('Converted AQI:', aqi);
     const aqiColor = getAQIColor(aqi);
     airQualityElem.innerHTML = `
         <h3>Air Quality</h3>
@@ -150,11 +150,10 @@ document.addEventListener('DOMContentLoaded', async () => {
     });
 
     updateDateTime();
-    setInterval(updateDateTime, 1000); // Update date and time every second
+    setInterval(updateDateTime, 1000);
 
     addEventListeners();
 
-    // Fetch and display weather for multiple default cities in Indonesia on page load
     for (const city of cities) {
         const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${apiKey}`);
         const data = await response.json();
