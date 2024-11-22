@@ -20,7 +20,7 @@ app.use((req, res, next) => {
     next();
 });
 
-app.get('/api-key', (req, res) => {
+app.get('/api/api-key', (req, res) => {
     console.log('API Key Request:', process.env.API_KEY); // Log the API key for debugging
     res.json({ apiKey: process.env.API_KEY });
 });
