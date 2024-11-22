@@ -1,8 +1,11 @@
-
 let searchInput, searchButton, cityElem, descriptionElem, tempElem, forecastElem, weatherInfoElem, humidityElem, windElem, pressureElem, weatherIconElem, errorMessageElem, loadingSpinner, feelsLikeElem, visibilityElem, sunriseElem, sunsetElem, airQualityElem, dateTimeElem;
 let defaultCityElems = {}, defaultDescriptionElems = {}, defaultTempElems = {}, defaultWeatherIconElems = {};
 
 function updateWeatherInfo(data) {
+    if (!data.weather) {
+        console.error('Invalid weather data:', data); // Log invalid data for debugging
+        return;
+    }
     cityElem.textContent = data.name;
     descriptionElem.textContent = data.weather[0].description;
     tempElem.textContent = `${Math.round(data.main.temp)}°C`;

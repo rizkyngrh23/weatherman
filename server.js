@@ -13,7 +13,7 @@ app.use((req, res, next) => {
     next();
 });
 
-app.use(express.static(path.join(__dirname, '../public'))); // Serve static files
+app.use(express.static(path.join(__dirname, 'public'))); // Serve static files
 
 app.use((req, res, next) => {
     res.setHeader("Content-Security-Policy", "default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self'");
@@ -21,7 +21,6 @@ app.use((req, res, next) => {
 });
 
 app.get('/api-key', (req, res) => {
-    console.log('API Key Request:', process.env.API_KEY); // Log the API key for debugging
     res.json({ apiKey: process.env.API_KEY });
 });
 
@@ -35,7 +34,8 @@ app.get('/favicon.ico', (req, res) => {
 });
 
 app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, '../public', 'index.html'));
+    res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
-module.exports = app;
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => console.log(`Server running on http://localhost:${PORT}`));

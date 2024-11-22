@@ -3,7 +3,9 @@ let apiKey;
 async function fetchApiKey() {
     try {
         const response = await fetch('/api-key');
-        const data = await response.json();
+        const text = await response.text();
+        console.log('API Key Response:', text); // Log the response for debugging
+        const data = JSON.parse(text);
         apiKey = data.apiKey;
     } catch (error) {
         console.error('Error fetching API key:', error);
