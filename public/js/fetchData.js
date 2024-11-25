@@ -7,10 +7,11 @@ async function fetchApiKey() {
             throw new Error('Failed to fetch API key');
         }
         const data = await response.json();
-        if (!data.API_KEY) {
+        console.log('API Key Response:', data);
+        if (!data.apiKey) {
             throw new Error('API key not found in response');
         }
-        apiKey = data.API_KEY;
+        apiKey = data.apiKey;
     } catch (error) {
         console.error('Error fetching API key:', error);
     }
