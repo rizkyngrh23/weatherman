@@ -19,7 +19,7 @@ Weatherman is a weather application that provides current weather information, a
 
 You can try out the live version of the application here:
 
-[**https://rizkyngrh23.my.id/weatherman**](https://www.rizkyngrh23.my.id/)
+[**https://rizkyngrh23.my.id/weatherman**](https://weatherman-murex.vercel.app/)
 <br>
 <br>
 
