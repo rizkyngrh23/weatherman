@@ -89,12 +89,30 @@ function updateDateTime() {
 }
 
 function updateDefaultCityWeather(city, data) {
+    if (!data.weather) {
+        console.error('Invalid weather data for default city:', data);
+        return;
+    }
     defaultCityElems[city].textContent = data.name;
     defaultDescriptionElems[city].textContent = data.weather[0].description;
     defaultTempElems[city].textContent = `${Math.round(data.main.temp)}°C`;
     defaultWeatherIconElems[city].src = `http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`;
     defaultWeatherIconElems[city].classList.remove('hidden');
     document.getElementById(`${city.toLowerCase()}-weather`).classList.remove('hidden');
+}
+
+async function fetchDefaultCityWeather(city) {
+    try {
+        const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${apiKey}`);
+        if (!response.ok) {
+            const errorData = await response.json();
+            throw new Error(errorData.message || 'Invalid API key or city not found');
+        }
+        const data = await response.json();
+        updateDefaultCityWeather(city, data);
+    } catch (error) {
+        console.error(`Error fetching weather for ${city}:`, error);
+    }
 }
 
 function addEventListeners() {
@@ -155,8 +173,6 @@ document.addEventListener('DOMContentLoaded', async () => {
     addEventListeners();
 
     for (const city of cities) {
-        const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${apiKey}`);
-        const data = await response.json();
-        updateDefaultCityWeather(city, data);
+        await fetchDefaultCityWeather(city);
     }
 });

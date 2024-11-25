@@ -3,9 +3,14 @@ let apiKey;
 async function fetchApiKey() {
     try {
         const response = await fetch('/api/api-key');
-        const text = await response.text();
-        console.log('API Key Response:', text);
-        const data = JSON.parse(text);
+        if (!response.ok) {
+            throw new Error('Failed to fetch API key');
+        }
+        const data = await response.json();
+        console.log('API Key Response:', data);
+        if (!data.apiKey) {
+            throw new Error('API key not found in response');
+        }
         apiKey = data.apiKey;
     } catch (error) {
         console.error('Error fetching API key:', error);
@@ -16,7 +21,8 @@ async function fetchWeather(city) {
     try {
         const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${apiKey}`);
         if (!response.ok) {
-            throw new Error('City not found');
+            const errorData = await response.json();
+            throw new Error(errorData.message || 'City not found');
         }
         const data = await response.json();
         updateWeatherInfo(data);
